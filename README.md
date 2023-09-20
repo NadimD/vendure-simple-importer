@@ -1,5 +1,7 @@
 # vendure-simple-importer
 
+![Preview of the plugin](https://i.imgur.com/0au661u.png)
+
 ⚠️ This plugin is not production-ready, please be cautious and use it only on development environments.
 
 Feel free to modify it to suit your needs.
