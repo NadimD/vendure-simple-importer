@@ -17,7 +17,9 @@ import { SimpleImporterPlugin } from "./plugins/simple-importer/simple-importer-
 2. Add the plugin to your `AdminUiPlugin` extensions
 
 See link to learn about Admin UI Extensions : https://docs.vendure.io/plugins/extending-the-admin-ui/
+
 OR
+
 See link on how to setup Admin UI Extensions in the `real-world-vendure` plugin : https://github.com/vendure-ecommerce/real-world-vendure/blob/master/src/compile-admin-ui.ts
 
 ## How to use
