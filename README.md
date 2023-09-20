@@ -11,7 +11,7 @@ Feel free to modify it to suit your needs.
 import { SimpleImporterPlugin } from "./plugins/simple-importer/simple-importer-plugin";
 ```
 
-2. Add the plugin to your AdminUiPlugin extensions
+2. Add the plugin to your `AdminUiPlugin` extensions
 
 See link to learn about Admin UI Extensions : https://docs.vendure.io/plugins/extending-the-admin-ui/
 OR
@@ -19,7 +19,7 @@ See link on how to setup Admin UI Extensions in the `real-world-vendure` plugin 
 
 ## How to use
 
-Simply navigate to "Simple Importers > Import Products" and upload a `.csv` file.
+Simply navigate to `Simple Importers > Import Products` and upload a `.csv` file.
 
 Imported files will be stored into a newly created `/src/imports/` folder.
 
@@ -44,7 +44,7 @@ export const config: VendureConfig = {
 
 See Vendure docs about Middleware : https://docs.vendure.io/typescript-api/common/middleware/
 
-⚠️ The Vendure "Payments Plugin" uses a Middleware for `raw body`, so if you define a Middleware like above, it will be overriden and ignored, which is a problem. Make sure to import the `Payments Plugin` Middleware into the array.
+⚠️ The Vendure `Payments Plugin` uses a Middleware for `raw body`, so if you define a Middleware like above, it will be overriden and ignored, which is a problem. Make sure to import the `Payments Plugin` Middleware into the array.
 
 ## Future
 
