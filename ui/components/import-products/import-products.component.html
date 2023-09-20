@@ -1,0 +1,72 @@
+<vdr-page-header>
+  <vdr-page-title></vdr-page-title>
+</vdr-page-header>
+
+<vdr-page-block>
+  <form clrStepper [formGroup]="form" (ngSubmit)="submit()">
+    <clr-stepper-panel formGroupName="step1">
+      <clr-step-title>Select a file</clr-step-title>
+      <clr-step-description
+        >File type must be <b>.csv</b>
+      </clr-step-description>
+      <div>
+        <input
+          type="file"
+          class="file-input"
+          #fileInput
+          (change)="select($event)"
+          [accept]="accept"
+          formControlName="file"
+        />
+        <button
+          class="btn btn-primary"
+          (click)="fileInput.click()"
+          [disabled]="uploading"
+        >
+          <ng-container *ngIf="uploading; else selectable">
+            <clr-spinner clrInline></clr-spinner>
+            Uploading
+          </ng-container>
+          <ng-template #selectable>
+            <clr-icon shape="upload-cloud"></clr-icon>
+            Upload file
+          </ng-template>
+        </button>
+        <div *ngIf="import.name !== ''">
+          {{ import.name }}
+        </div>
+      </div>
+
+      <clr-step-content *clrIfExpanded>
+        <button
+          clrStepButton="next"
+          (click)="startImport()"
+          *ngIf="form.get('step1.file').value"
+        >
+          Import
+        </button>
+      </clr-step-content>
+    </clr-stepper-panel>
+
+    <clr-stepper-panel formGroupName="step2">
+      <clr-step-title>Result</clr-step-title>
+      <clr-step-description></clr-step-description>
+      <clr-step-content *clrIfExpanded>
+        <div *ngIf="!importResult">
+          <clr-spinner clrInline></clr-spinner> Importing, please wait...
+        </div>
+        <div *ngIf="importResult">
+          <h4>Status: {{ importResult.currentProduct }}</h4>
+          <h5>Processed: {{ importResult.processed }}</h5>
+
+          <div *ngIf="importResult.errors && importResult.errors.length > 0">
+            <h5>Errors:</h5>
+            <ul class="py-2">
+              <li *ngFor="let error of importResult.errors">{{ error }}</li>
+            </ul>
+          </div>
+        </div>
+      </clr-step-content>
+    </clr-stepper-panel>
+  </form>
+</vdr-page-block>
