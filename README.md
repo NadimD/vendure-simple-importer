@@ -24,7 +24,7 @@ See link on how to setup Admin UI Extensions in the `real-world-vendure` plugin 
 
 Simply navigate to `Simple Importers > Import Products` and upload a `.csv` file.
 
-Imported files will be stored into a newly created `/src/imports/` folder.
+Imported files will be stored into a newly created `/src/imports/products` folder.
 
 ## File size
 
