@@ -28,6 +28,8 @@ Simply navigate to `Simple Importers > Import Products` and upload a `.csv` file
 
 Imported files will be stored into a newly created `/src/imports/products` folder.
 
+Official Vendure docs provide the structure of the `.csv` file : https://docs.vendure.io/developer-guide/importing-product-data/
+
 ## File size
 
 If you have issues uploading a big file, make sure to add a Middleware to the `apiOptions` object :
