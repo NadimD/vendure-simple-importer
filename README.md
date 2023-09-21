@@ -10,6 +10,12 @@ Feel free to modify it to suit your needs.
 
 You must install the official Vendure `ui-devkit` in order to build the Admin UI extensions of this plugin.
 
+A well-structured CSV file. Take example on the official `sample` from Vendure :
+https://github.com/vendure-ecommerce/vendure/blob/master/packages/core/mock-data/data-sources/products.csv
+
+Official Vendure docs provide the structure and information about the import:
+https://docs.vendure.io/developer-guide/importing-product-data/
+
 ## Getting started
 
 1. Import plugin into `vendure-config.ts`
@@ -90,8 +96,6 @@ export function customAdminUi(options: {
 Simply navigate to `Simple Importers > Import Products` and upload a `.csv` file.
 
 Imported files will be stored into a newly created `/src/imports/products` folder.
-
-Official Vendure docs provide the structure of the `.csv` file : https://docs.vendure.io/developer-guide/importing-product-data/
 
 ## File size
 
