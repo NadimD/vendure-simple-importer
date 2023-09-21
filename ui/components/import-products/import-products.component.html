@@ -37,15 +37,11 @@
         </div>
       </div>
 
-      <clr-step-content *clrIfExpanded>
-        <button
-          clrStepButton="next"
-          (click)="startImport()"
-          *ngIf="form.get('step1.file').value"
-        >
-          Import
-        </button>
-      </clr-step-content>
+      <ng-container *ngIf="import.name !== ''">
+        <clr-step-content *clrIfExpanded>
+          <button clrStepButton="next" (click)="startImport()">Import</button>
+        </clr-step-content>
+      </ng-container>
     </clr-stepper-panel>
 
     <clr-stepper-panel formGroupName="step2">

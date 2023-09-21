@@ -30,8 +30,6 @@ export class ImportProductsComponent implements OnInit {
   @Input() dropZoneTarget = "body";
   @Input() uploading = false;
 
-  private destroy$ = new Subject<void>();
-
   importResult: ImportProgress | null = null;
 
   dragging = false;
@@ -105,7 +103,6 @@ export class ImportProductsComponent implements OnInit {
       .mutate<ImportCsvFileResponse>(IMPORT_CSV_FILE_MUTATION, {
         fileContent: this.import.fileContent,
       })
-      .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data) => {
           console.log("DATA", data);
@@ -117,11 +114,6 @@ export class ImportProductsComponent implements OnInit {
           console.error("An error occurred:", error);
         },
       });
-  }
-
-  ngOnDestroy() {
-    this.destroy$.next();
-    this.destroy$.complete();
   }
 
   submit() {
