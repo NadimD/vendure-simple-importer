@@ -6,6 +6,10 @@
 
 Feel free to modify it to suit your needs.
 
+## Requirements
+
+You must install the official Vendure `ui-devkit` in order to build the Admin UI extensions of this plugin.
+
 ## Getting started
 
 1. Import plugin into `vendure-config.ts`
