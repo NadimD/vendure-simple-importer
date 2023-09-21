@@ -26,6 +26,65 @@ OR
 
 See link on how to setup Admin UI Extensions in the `real-world-vendure` plugin : https://github.com/vendure-ecommerce/real-world-vendure/blob/master/src/compile-admin-ui.ts
 
+Example of `vendure-config.ts` file :
+```ts
+// ...
+import { customAdminUi } from "./compile-admin-ui";
+const IS_PROD = path.basename(__dirname) === "dist";
+const IS_DEV = process.env.APP_ENV === "dev";
+
+// ...
+export const config: VendureConfig = {
+// ...
+plugins: [
+  AdminUiPlugin.init({
+    route: "admin",
+    port: 3002,
+    adminUiConfig: {
+      apiHost: "http://localhost",
+      apiPort: 3000,
+    },
+    app: customAdminUi({ recompile: !IS_PROD, devMode: !IS_PROD }),
+  }),
+  SimpleImporterPlugin,
+  // ...
+],
+```
+
+`compile-admin-ui.ts` file :
+```ts
+import { compileUiExtensions } from "@vendure/ui-devkit/compiler";
+import path from "path";
+import { SimpleImporterPlugin } from "./plugins/simple-importer/simple-importer-plugin";
+
+if (require.main === module) {
+  // Called directly from command line
+  customAdminUi({ recompile: true, devMode: false })
+    .compile?.()
+    .then(() => {
+      process.exit(0);
+    });
+}
+
+export function customAdminUi(options: {
+  recompile: boolean;
+  devMode: boolean;
+}) {
+  const compiledAppPath = path.join(__dirname, "../admin-ui");
+  if (options.recompile) {
+    return compileUiExtensions({
+      outputPath: compiledAppPath,
+      extensions: [SimpleImporterPlugin.uiExtensions],
+      devMode: options.devMode,
+    });
+  } else {
+    return {
+      path: path.join(compiledAppPath, "dist"),
+    };
+  }
+}
+```
+
 ## How to use
 
 Simply navigate to `Simple Importers > Import Products` and upload a `.csv` file.
