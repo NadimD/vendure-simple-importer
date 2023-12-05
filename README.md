@@ -118,6 +118,11 @@ export const config: VendureConfig = {
 
 See Vendure docs about Middleware : https://docs.vendure.io/typescript-api/common/middleware/
 
+[!WARNING]
+Since Vendure 2.1.0 you no longer need to put the middleware in your Vendure Config :
+https://github.com/vendure-ecommerce/vendure/blob/master/CHANGELOG.md#210-2023-10-11
+
+
 ⚠️ The Vendure `Payments Plugin` uses a Middleware for `raw body`, so if you define a Middleware like above, it will be overriden and ignored, which is a problem. Make sure to import the `Payments Plugin` Middleware into the array.
 
 ## Future
