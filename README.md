@@ -116,7 +116,7 @@ export const config: VendureConfig = {
 };
 ```
 
-See Vendure docs about Middleware : https://docs.vendure.io/typescript-api/common/middleware/
+See Vendure docs about Middleware : https://docs.vendure.io/reference/typescript-api/common/middleware/
 
 > **Warning**
 Since Vendure 2.1.0 you no longer need to put the middleware in your Vendure Config :
